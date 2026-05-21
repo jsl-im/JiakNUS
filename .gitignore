@@ -1,0 +1,26 @@
+# === JavaScript / Next.js / Node Junk ===
+node_modules/
+.next/
+out/
+build/
+.npm
+.eslintcache
+
+# === Python / FastAPI Junk ===
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# === Secrets & Environment Variables (CRITICAL) ===
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# === Operating System Junk ===
+.DS_Store
+Thumbs.db
