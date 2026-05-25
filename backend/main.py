@@ -40,13 +40,24 @@ def get_canteens():
         raise HTTPException(status_code=500, detail=str(error))
     
 @app.get("/stalls")
-def get_stalls(canteen_id: int | None = Query(default=None)):
+def get_stalls(
+    canteen_id: int | None = Query(default=None),
+    is_halal: bool | None = Query(default=None),
+    has_vegetarian: bool | None = Query(default=None)
+    ):
+
     try:
         supabase = get_supabase()
         query = supabase.table("stalls").select("*")
 
         if canteen_id is not None:
             query = query.eq("canteen_id", canteen_id)
+
+        if is_halal is not None:
+            query = query.eq("halal_status", is_halal)
+            
+        if has_vegetarian is not None:
+            query = query.eq("vegetarian_options", has_vegetarian)
         
         response = query.execute()
         return response.data
