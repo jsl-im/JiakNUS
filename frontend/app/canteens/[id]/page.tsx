@@ -9,7 +9,7 @@ type Stall = {
   canteen_id: number;
   name: string;
   cuisine_type: string | null;
-  halal_status: string | null;
+  halal_status: boolean | null;
   vegetarian_options: boolean;
   price_min: number | null;
   price_max: number | null;
@@ -58,7 +58,9 @@ export default function CanteenDetailPage() {
             >
                 <h2 className="text-xl font-medium text-zinc-900">{stall.name}</h2>
                 <p className="text-zinc-600">{stall.cuisine_type}</p>
-                <p className="text-zinc-600">Halal: {stall.halal_status}</p>
+                <p className="text-zinc-600">
+                  Halal: {stall.halal_status ? "Yes" : "No"}
+                </p>
             </Link>
         ))}
       </div>
